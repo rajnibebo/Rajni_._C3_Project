@@ -41,7 +41,7 @@ public class Restaurant {
         Item newItem = new Item(name,price);
         menu.add(newItem);
     }
-    
+
     public void removeFromMenu(String itemName) throws itemNotFoundException {
 
         Item itemToBeRemoved = findItemByName(itemName);
@@ -79,6 +79,12 @@ public class Restaurant {
     }
 
     public int order(List<String> selectedItems) {
-        return 0;
+        AtomicInteger total = new AtomicInteger(0);
+        selectedItems.stream().forEach(itemName -> {
+            Item item = Objects.requireNonNull(findItemByName(itemName));
+            total.addAndGet(item.getPrice());
+        });
+        System.out.println("Your order will cost: "+total.get());
+        return total.get();
     }
 }
