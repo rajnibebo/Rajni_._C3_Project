@@ -62,4 +62,16 @@ class RestaurantTest {
                 ()->restaurant.removeFromMenu("French fries"));
     }
     //<<<<<<<<<<<<<<<<<<<<<<<MENU>>>>>>>>>>>>>>>>>>>>>>>>>>>>>
+
+    @Test
+    public void display_order_total() {
+        List<String> orderList = Arrays.asList("Sweet corn soup", "Vegetable lasagne");
+        int total = restaurant.order(orderList);
+        assertEquals(total, 388);
+
+        orderList = Arrays.asList("Sweet corn soup");
+        total = restaurant.order(orderList);
+        assertEquals(total, 119);
+    }
+
 }

@@ -77,4 +77,8 @@ public class Restaurant {
         }
         return false;
     }
+
+    public int order(List<String> selectedItems) {
+        return 0;
+    }
 }
